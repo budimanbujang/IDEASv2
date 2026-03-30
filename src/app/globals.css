@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #007B7F;
+  --color-primary-light: #00A3A8;
+  --color-background: #0A1628;
+  --color-surface: #111D2E;
+  --color-surface-elevated: #1A2942;
+  --color-accent-gold: #D4A847;
+  --color-guild-healthcare: #E11D48;
+  --color-guild-proptech: #3B82F6;
+  --color-guild-agrifood: #22C55E;
+  --color-guild-food: #F97316;
+  --color-guild-lifesciences: #EC4899;
+  --color-guild-semiconductor: #6366F1;
+  --color-guild-crossvertical: #A855F7;
+  --color-ops-command: #06B6D4;
+  --color-ops-l1: #22C55E;
+  --color-ops-l2: #F59E0B;
+  --color-ops-l3: #3B82F6;
+  --color-monetise: #D4A847;
+  --color-border: #1E3A5F;
+  --color-text-primary: #F1F5F9;
+  --color-text-secondary: #94A3B8;
+}
+
+body {
+  background-color: #0A1628;
+  color: #F1F5F9;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0A1628;
+}
+::-webkit-scrollbar-thumb {
+  background: #1E3A5F;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2A4A6F;
+}
+
+/* Glassmorphism utility */
+.glass {
+  background: rgba(17, 29, 46, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(30, 58, 95, 0.5);
+}
+
+/* Pulse animation for live indicators */
+@keyframes pulse-glow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Blink animation for anomaly indicators */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #007B7F, #00A3A8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
