@@ -66,7 +66,7 @@ const navGroups: NavGroup[] = [
   {
     title: 'LAYER 1 - DISCOVER',
     items: [
-      { label: 'Capabilities', icon: Search, path: '/discover/capabilities' },
+      { label: 'Capabilities', icon: Search, path: '/discover' },
       { label: 'Tenants', icon: Building2, path: '/discover/tenants' },
       { label: 'Matchmaking', icon: Sparkles, path: '/discover/matchmaking' },
       { label: 'IBTEC Map', icon: Map, path: '/discover/map' },
@@ -75,7 +75,7 @@ const navGroups: NavGroup[] = [
   {
     title: 'LAYER 2 - ENGAGE',
     items: [
-      { label: 'Tiers', icon: Users, path: '/engage/tiers' },
+      { label: 'Tiers', icon: Users, path: '/engage' },
       { label: 'Guilds', icon: Shield, path: '/engage/guilds' },
       { label: 'Pipeline', icon: Kanban, path: '/engage/pipeline' },
       { label: 'Challenges', icon: Target, path: '/engage/challenges' },
@@ -85,38 +85,34 @@ const navGroups: NavGroup[] = [
     title: 'LAYER 3 - ACCELERATE',
     items: [
       { label: 'Grand Challenges', icon: Trophy, path: '/accelerate/grand-challenges' },
-      { label: 'Sprints', icon: Zap, path: '/accelerate/sprints' },
-      { label: 'Ventures', icon: Rocket, path: '/accelerate/ventures' },
-      { label: 'Sandbox', icon: FlaskConical, path: '/accelerate/sandbox' },
+      { label: 'Overview', icon: Zap, path: '/accelerate' },
     ],
   },
   {
     title: 'LAYER 4 - INTELLIGENCE',
     items: [
-      { label: 'Ecosystem Dashboard', icon: BarChart3, path: '/intelligence/ecosystem' },
-      { label: 'Market Intel', icon: TrendingUp, path: '/intelligence/market' },
-      { label: 'AI Models', icon: Brain, path: '/intelligence/ai-models' },
+      { label: 'Ecosystem Dashboard', icon: BarChart3, path: '/intelligence/ecosystem-dashboard' },
+      { label: 'Market Intel', icon: TrendingUp, path: '/intelligence/market-intelligence' },
+      { label: 'AI Models', icon: Brain, path: '/intelligence/models' },
       { label: 'Data Fabric', icon: Database, path: '/intelligence/data-fabric' },
-      { label: 'Benchmarks', icon: Radar, path: '/intelligence/benchmarks' },
+      { label: 'Analytics', icon: Radar, path: '/intelligence/analytics' },
     ],
   },
   {
     title: 'LAYER 5 - OPERATIONS',
     items: [
-      { label: 'Command Centre', icon: Monitor, path: '/operations/command-centre' },
+      { label: 'Command Centre', icon: Monitor, path: '/operations' },
       { label: 'Agentic AI', icon: Bot, path: '/operations/agentic-ai' },
       { label: 'Digital Twin', icon: Globe, path: '/operations/digital-twin' },
-      { label: 'IoT Sensors', icon: Radio, path: '/operations/iot-sensors' },
-      { label: 'Autonomous', icon: Car, path: '/operations/autonomous' },
+      { label: 'IoT Sensors', icon: Radio, path: '/operations/iot' },
       { label: 'Energy', icon: Zap, path: '/operations/energy' },
-      { label: '5G Network', icon: Wifi, path: '/operations/5g-network' },
+      { label: '5G Network', icon: Wifi, path: '/operations/network' },
     ],
   },
   {
     title: 'LAYER 6 - FEDERATION',
     items: [
-      { label: 'Partners', icon: Globe2, path: '/federation/partners' },
-      { label: 'Exchanges', icon: ArrowLeftRight, path: '/federation/exchanges' },
+      { label: 'Partners', icon: Globe2, path: '/federation' },
     ],
   },
   {
@@ -130,22 +126,18 @@ const navGroups: NavGroup[] = [
   {
     title: 'PROJECTS',
     items: [
-      { label: 'Catalytic Projects', icon: FolderKanban, path: '/projects/catalytic' },
+      { label: 'Catalytic Projects', icon: FolderKanban, path: '/projects' },
       { label: '90-Day Sprint', icon: Timer, path: '/projects/sprint' },
-      { label: 'Phase Gates', icon: Milestone, path: '/projects/phase-gates' },
+      { label: 'Phase Gates', icon: Milestone, path: '/projects/gates' },
     ],
   },
   {
-    title: 'GOVERNANCE',
+    title: 'MORE',
     items: [
+      { label: 'Benchmarks', icon: BarChart3, path: '/benchmarks' },
       { label: 'Trust Portal', icon: ShieldCheck, path: '/trust' },
-      { label: 'Admin', icon: Settings, path: '/admin' },
-    ],
-  },
-  {
-    title: 'CONTEXT',
-    items: [
       { label: 'Johor Context', icon: MapPin, path: '/context' },
+      { label: 'Admin', icon: Settings, path: '/admin' },
     ],
   },
 ]
@@ -156,14 +148,14 @@ export default function Sidebar() {
 
   const isActive = (path: string) => {
     if (path === '/') return pathname === '/'
-    return pathname.startsWith(path)
+    return pathname === path || pathname.startsWith(path + '/')
   }
 
   return (
     <aside
       className={cn(
-        'fixed left-0 top-0 h-screen bg-surface border-r border-border',
-        'flex flex-col transition-all duration-300 ease-in-out z-50',
+        'h-screen bg-surface border-r border-border shrink-0',
+        'flex flex-col transition-all duration-300 ease-in-out',
         collapsed ? 'w-16' : 'w-[260px]'
       )}
     >
@@ -192,13 +184,13 @@ export default function Sidebar() {
       {!collapsed && (
         <div className="px-4 py-2 border-b border-border">
           <p className="text-[10px] text-text-secondary leading-tight">
-            Innovation District Ecosystem<br />Acceleration System
+            Integrated Discovery, Engagement<br />& Acceleration System
           </p>
         </div>
       )}
 
       {/* Navigation */}
-      <nav className="flex-1 overflow-y-auto py-2 scrollbar-thin">
+      <nav className="flex-1 overflow-y-auto py-2">
         {navGroups.map((group) => (
           <div key={group.title} className="mb-1">
             {!collapsed && (
